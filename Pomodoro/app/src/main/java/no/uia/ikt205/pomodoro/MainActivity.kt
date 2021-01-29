@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         startButton = findViewById<Button>(R.id.startCountdownButton)
         startButton.setOnClickListener() {
             startCountDown(it)
+            startButton.isEnabled = false
         }
 
         add30 = findViewById<Button>(R.id.add30)
@@ -81,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         timer = object : CountDownTimer(timeToCountDownInMs, timeTicks) {
             override fun onFinish() {
                 Toast.makeText(this@MainActivity,"Arbeidsøkt er ferdig", Toast.LENGTH_SHORT).show()
+                startButton.isEnabled = true
             }
 
             override fun onTick(millisUntilFinished: Long) {
