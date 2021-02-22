@@ -2,4 +2,9 @@
     <string name="app_name">Pomodoro</string>
     <string name="default_time_display">00:00:00</string>
     <string name="startButtonText">Start</string>
+    <string name="seekbarStatus">- -</string>
+    <string name="set_brake_time">Set break time:</string>
+    <string name="set_countdown_time">Set countdown time:</string>
+    <string name="set_brakes">Set breaks</string>
+    <string name="input">Input</string>
 </resources>
