@@ -10,6 +10,7 @@ import java.time.chrono.MinguoChronology
 
 class MainActivity : AppCompatActivity() {
 
+
     lateinit var timer:CountDownTimer
     lateinit var pause:CountDownTimer
     lateinit var startButton:Button
@@ -84,7 +85,9 @@ class MainActivity : AppCompatActivity() {
         breakTimeDisplay = findViewById<TextView>(R.id.breakTime)
 
 
-
+    fun changeCountDownTime(newCountDownTimeinMs: Long){
+        timeToCountDownInMs = newCountDownTimeinMs
+        updateCountDownDisplay(timeToCountDownInMs)
     }
 
 
@@ -104,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTick(millisUntilFinished: Long) {
-               updateCountDownDisplay(millisUntilFinished)
+                updateCountDownDisplay(millisUntilFinished)
             }
         }
 
