@@ -7,14 +7,16 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/countDownView"
+        android:id="@+id/breakTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_time_display"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.835" />
 
     <Button
         android:id="@+id/startCountdownButton"
@@ -25,56 +27,101 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countDownView"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
 
-    <Button
-        android:id="@+id/add30"
+    <TextView
+        android:id="@+id/countDownView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add30Text"
+        android:text="@string/default_time_display"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+
+    <EditText
+        android:id="@+id/setWantedBreaks"
+        android:layout_width="192dp"
+        android:layout_height="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.363"
+        android:hint="@string/input"
+        android:inputType="number"/>
 
-    <Button
-        android:id="@+id/add60"
+    <SeekBar
+        android:id="@+id/seekBarSetTime"
+        android:layout_width="359dp"
+        android:layout_height="38dp"
+        android:max="300"
+        android:min="15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <SeekBar
+        android:id="@+id/seekBarSetBreakTime"
+        android:layout_width="359dp"
+        android:layout_height="38dp"
+        android:max="100"
+        android:min="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903" />
+
+    <EditText
+        android:id="@+id/setBreakTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add60Text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/set_brake_time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.846" />
 
-    <Button
-        android:id="@+id/add90"
+    <EditText
+        android:id="@+id/setCountdownTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add90Text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/set_countdown_time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.653" />
 
-    <Button
-        android:id="@+id/add120"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add120Text"
+    <EditText
+        android:id="@+id/setBreaks"
+        android:layout_width="190dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/set_brakes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.987"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.275" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
