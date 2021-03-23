@@ -35,6 +35,9 @@ class BlackTangentFragment : Fragment() {
         val view = binding.root
 
         view.blackTangentKey.setOnTouchListener(object: View.OnTouchListener{
+
+            var startTime = 0
+
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 when(event?.action){
                     MotionEvent.ACTION_DOWN -> this@BlackTangentFragment.onKeyDown?.invoke(note)
