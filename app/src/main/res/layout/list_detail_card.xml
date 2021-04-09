@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
@@ -13,34 +13,35 @@
     app:cardCornerRadius="4dp"
     android:backgroundTint="@color/teal_700">
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            tools:text="Title"
+            tools:text="Item"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@id/checkBox"
+            android:layout_toStartOf="@id/deleteItem_btn"
             />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <Button
-            android:id="@+id/deleteList_btn"
+            android:id="@+id/deleteItem_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/delete_btn"
+            android:layout_alignParentEnd="true"
             />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
