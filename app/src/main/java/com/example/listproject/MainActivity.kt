@@ -49,10 +49,9 @@ class MainActivity : AppCompatActivity() {
 
             binding.newList.setText("")
 
-            if(title.isEmpty())
-                Log.e(TAG, "You cannot make a list with no name")
-
-            if(title.isNotEmpty())
+            if (title.isEmpty())
+                Log.e(TAG, "You cannot add a list without a name")
+            else
                 addList(title)
         }
     }
