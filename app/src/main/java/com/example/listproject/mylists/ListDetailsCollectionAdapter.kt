@@ -8,11 +8,18 @@ import com.example.listproject.databinding.ListDetailCardBinding
 import com.example.listproject.mylists.data.ListDetails
 import com.example.listproject.mylists.data.Task
 
-class ListDetailsCollectionAdapter(private var items:List<ListDetails>): RecyclerView.Adapter<ListDetailsCollectionAdapter.ViewHolder>() {
+class ListDetailsCollectionAdapter(
+    private var items:List<ListDetails>,
+    private val removeItem:(ListDetails) -> Unit)
+    : RecyclerView.Adapter<ListDetailsCollectionAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ListDetailCardBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(items:ListDetails){
+        fun bind(items:ListDetails, removeItem:(ListDetails) -> Unit){
             binding.item.text = items.item
+
+            binding.deleteItemBtn.setOnClickListener {
+                removeItem(items)
+            }
         }
     }
 
@@ -20,7 +27,7 @@ class ListDetailsCollectionAdapter(private var items:List<ListDetails>): Recycle
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        holder.bind(item)
+        holder.bind(item, removeItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder{

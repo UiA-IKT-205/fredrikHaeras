@@ -19,7 +19,7 @@ class ListDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.itemList.layoutManager = LinearLayoutManager(this)
-        binding.itemList.adapter = ListDetailsCollectionAdapter(emptyList<ListDetails>())
+        binding.itemList.adapter = ListDetailsCollectionAdapter(emptyList<ListDetails>(), this::removeItem)
 
         val items = ItemDepositoryManager.instance
         items.onItem = {
@@ -44,5 +44,17 @@ class ListDetailsActivity : AppCompatActivity() {
     private fun addItem(item:String){
         val items = ListDetails(item)
         ItemDepositoryManager.instance.addItem(items)
+    }
+
+    private fun removeItem(item:ListDetails):Unit{
+        ItemDepositoryManager.instance.itemCollection.remove(item)
+        updateItem()
+    }
+
+    private fun updateItem(){
+        binding.itemList.adapter = ListDetailsCollectionAdapter(
+            ItemDepositoryManager.instance.itemCollection,
+            this::removeItem
+        )
     }
 }

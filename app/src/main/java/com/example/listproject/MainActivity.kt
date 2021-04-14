@@ -12,6 +12,7 @@ import com.example.listproject.mylists.data.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_list_details.*
 import kotlinx.android.synthetic.main.card_layout.view.*
 
 class ListHolder{
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         signInAnonymously()
 
         binding.toDoList.layoutManager = LinearLayoutManager(this)
-        binding.toDoList.adapter = ListCollectionAdapter(emptyList<Task>(), this::onTaskClicked)
+        binding.toDoList.adapter = ListCollectionAdapter(emptyList<Task>(), this::onTaskClicked, this::removeList)
 
         val lists = ListDepositoryManager.instance
         lists.onList = {
@@ -69,6 +70,11 @@ class MainActivity : AppCompatActivity() {
         ListDepositoryManager.instance.addList(list)
     }
 
+    private fun removeList(list:Task):Unit{
+        ListDepositoryManager.instance.listCollection.remove(list)
+        updateMain()
+    }
+
     private fun signInAnonymously(){
 
         auth.signInAnonymously().addOnSuccessListener {
@@ -76,5 +82,13 @@ class MainActivity : AppCompatActivity() {
         }.addOnFailureListener{
             Log.e(TAG,"Login failed ", it)
         }
+    }
+
+    private fun updateMain(){
+        binding.toDoList.adapter = ListCollectionAdapter(
+            ListDepositoryManager.instance.listCollection,
+            this::onTaskClicked,
+            this::removeList
+        )
     }
 }
