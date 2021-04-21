@@ -9,5 +9,5 @@ Litt om min app:
   Videre kan brukeren klikke seg videre inn på hver enkelt liste, der han/hun kommer til en selve innholdet av listen. 
   Hvert element av listen blir også presentert i hvert sitt card i et scrollView, med en checkbox, et navn på elementet og en knapp for å slette elementet. 
   Jeg har også konfigurert en oppkobling til Firebase, som gjør at man logger inn anonymt i appen ved oppstart.
-  Jeg har ikke helt fått til dette med sletting av lister og elementer, samt permanent lagring av listene og elementene til Firebase.
+  Jeg har ikke helt fått til dette med permanent lagring av listene og elementene til Firebase.
 
