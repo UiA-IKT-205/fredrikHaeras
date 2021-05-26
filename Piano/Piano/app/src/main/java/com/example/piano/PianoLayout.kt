@@ -1,11 +1,13 @@
 package com.example.piano
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.example.piano.data.Note
 import com.example.piano.databinding.FragmentPianoBinding
 import kotlinx.android.synthetic.main.fragment_piano.view.*
@@ -15,7 +17,9 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-class  PianoLayout : Fragment() {
+class   PianoLayout : Fragment() {
+
+    var onSave:((file: Uri) -> Unit)? = null
 
     private var _binding:FragmentPianoBinding? = null
     private val binding get() = _binding!!
@@ -97,6 +101,43 @@ class  PianoLayout : Fragment() {
 
         view.saveScoreBtn.setOnClickListener{
             var fileName = view.fileNameTextEdit.text.toString()
+            if (score.count() > 0 && fileName.isNotEmpty()){
+                fileName = "$fileName.music"
+                val content:String = score.map {
+                    it.toString()
+                }.reduce{
+                    acc, s -> acc + s + "\n"
+                }
+                saveFile(fileName, content)
+                Toast.makeText(activity, "Saved the file with name $fileName", Toast.LENGTH_SHORT).show()
+            }else{
+                if (score.count() == 0){
+                    Toast.makeText(activity, "You have to press some notes for it to be saved", Toast.LENGTH_SHORT).show()
+                }
+                if (fileName.isNotEmpty()){
+                    Toast.makeText(activity, "Write a name to your file", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        return view
+    }
+
+    private fun saveFile(fileName:String, content:String){
+        val path = this.activity?.getExternalFilesDir(null)
+        if (path != null){
+            val file = File(path, fileName)
+            FileOutputStream(file, true).bufferedWriter().use { writer ->
+                writer.write(content)
+            }
+            this.onSave?.invoke(file.toUri())
+        }else{
+            Toast.makeText(activity, "The path does not exist", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+/*view.saveScoreBtn.setOnClickListener{
+            var fileName = view.fileNameTextEdit.text.toString()
             val path = this.activity?.getExternalFilesDir(null)
             val newNoteFile = (File(path,fileName))
 
@@ -119,8 +160,4 @@ class  PianoLayout : Fragment() {
                     print("Saved as $fileName at $path/$fileName")
                 }
             }
-        }
-
-        return view
-    }
-}
+        }*/
